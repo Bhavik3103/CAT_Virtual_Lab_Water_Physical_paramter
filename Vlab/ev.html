@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Self Evalution</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <style>
+        #results {
+            display: none;
+            background-color: #f1f1f1;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #results.show {
+            display: block;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar bg-dark" data-bs-theme="dark">
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Virtual Lab</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="practical.html">Practicals</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="margin-left: 150px;">Water analysis-Determination of Physical parameters</h1>
+    </div>
+
+    <div class="mx-5">
+        <h4>Questions:</h4>
+        <form>
+            <div id="results"></div>
+            <p>The standard unit of turbidity is considered as that produced by__________.</p>
+
+            <input type="radio" name="q1" value="a"> 4ppm of silica in distilled water<br>
+            <input type="radio" name="q1" value="b"> 2ppm of silica in distilled water<br>
+            <input type="radio" name="q1" value="c"> 1ppm of silica in distilled water<br>
+            <input type="radio" name="q1" value="d"> 9ppm of silica in distilled water<br>
+            <br>
+            <p>For the measurement of turbidity of water sample, commonly used standard reference solution
+                is____________.</p>
+
+            <input type="radio" name="q2" value="a"> Formazin polymer <br>
+            <input type="radio" name="q2" value="b"> Buffer solution <br>
+            <input type="radio" name="q2" value="c"> KCl <br>
+            <input type="radio" name="q2" value="d"> None of these <br>
+            <br>
+            <p>Raw water has an electrical conductivity in the range of___________.</p>
+
+            <input type="radio" name="q3" value="a"> 500-800 µS/cm<br>
+            <input type="radio" name="q3" value="b"> 50-100 µS/cm<br>
+            <input type="radio" name="q3" value="c"> 0.5 µS/cm<br>
+            <input type="radio" name="q3" value="d"> 56,000 µS/cm<br>
+            <br>
+
+            <p>What can we measure by using a nephelometer?</p>
+            <input type="radio" name="q4" value="a"> Electrical conductivity<br>
+            <input type="radio" name="q4" value="b"> pH<br>
+            <input type="radio" name="q4" value="c"> Turbidity<br>
+            <input type="radio" name="q4" value="d"> Alkalinity<br>
+            <hr>
+
+            <input type="button" value="Submit" onclick="submitQuiz()">
+        </form>
+        <!-- <div id="results"></div> -->
+        </form>
+    </div>
+
+    <!-- <h1>Hello, world!</h1> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
+        integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function submitQuiz() {
+            var q1 = document.forms[0].q1.value;
+            var q2 = document.forms[0].q2.value;
+            var q3 = document.forms[0].q3.value;
+            var q4 = document.forms[0].q4.value;
+
+            var correctAnswers = 0;
+            if (q1 == "c") {
+                correctAnswers = correctAnswers+1;
+            }
+            if (q2 == "a") {
+                correctAnswers = correctAnswers+1;
+            }
+            if (q3 == "a") {
+                correctAnswers = correctAnswers+1;
+            }
+            if (q4 == "c") {
+                correctAnswers = correctAnswers+1;
+            }
+
+            var results = document.getElementById("results");
+            results.classList.add("show");
+            results.innerHTML = "You got " + correctAnswers + " out of 4 questions correct.";
+        }
+    </script>
+</body>
+
+</html>

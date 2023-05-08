@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.css">
+  <title>Sign-Up</title>
+</head>
+
+<body>
+  <div class="loginBox">
+    <img class="user" src="https://i.ibb.co/yVGxFPR/2.png" height="100px" width="100px">
+    <h3>Sign Up here</h3>
+    <div id="reg">
+      <div class="inputBox">
+        <input id="uname" type="text" name="Username" placeholder="Username">
+        <!-- <input id="uni" type="text" name="University" placeholder="University"> -->
+        <input id="pass" type="password" name="Password" placeholder="Password">
+      </div>
+      <!-- <input type="submit" name="" value="Sign-Up"> -->
+      <button id="btn" class="btn1" onclick="register()">Sign-Up</button>
+    </div>
+
+  </div>
+
+
+  <script>
+    const form1 = document.getElementById("reg");
+    // form1.addEventListener('submit', registerUser)
+    async function register() {
+      // event.preventDefault()
+      const username = document.getElementById("uname").value;
+      const password = document.getElementById("pass").value;
+      // const uni = document.getElementById("uni").value;
+
+      const resu = await fetch("http://localhost:9999/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Origin" : "*", 
+          // "Access-Control-Allow-Credentials" : true 
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          // uni,
+        })
+        });
+        const result = await resu.json();
+
+
+      if (result.status === "ok") {
+        // alert('Success');
+        window.location.replace("login.html");
+      } else {
+        alert(result.error);
+      }
+    }
+  </script>
+</body>
+
+</html>
